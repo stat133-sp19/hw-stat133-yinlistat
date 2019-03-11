@@ -2,13 +2,7 @@
 
 This is just a demo folder with some dummy content.
 
-A quote:
-
-> "I may not have gone where I intended to go,
-> But I think I have ended up where I needed to be."
->
-> Douglas Adams.
- 
+Be the Change You Want to See in the World.
 
 An unordered list:
 
