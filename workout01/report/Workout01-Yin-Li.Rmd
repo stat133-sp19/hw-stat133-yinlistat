@@ -1,0 +1,59 @@
+---
+title: "Workout 1"
+author: "Yin Li"
+output: github_document
+---
+
+# Flash Back to the season 2016
+Attention! The performances by the Warriors have been stunning for the 2016 Season. We know that for the Dub Nation are so disappointed when Warriors did not claim the NBA champion for this season despite of superb performances but please do not lose hope! We all believe in the Warriors and _THEY WILL RECLAIM THE VICTORY_!
+![Golden State Warriors Logo](https://usatftw.files.wordpress.com/2016/05/logo-golden-state-warriors.png?w=1000&h=600&crop=1)
+The top 5 performing stars of Golden State Warriors are:
+![Andre Iguodala](http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/2386.png&w=350&h=254)
+![Draymond Green](http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6589.png&w=350&h=254)
+![Kevin Durant](http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3202.png&w=350&h=254)
+![Klay Thompson](http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/6475.png&w=350&h=254)
+![Stephen Curry](http://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3975.png&w=350&h=254)
+
+```{r, echo=FALSE}
+library(dplyr)
+column_types <- c("character","character","character","character","integer","integer","integer","integer","character","character","character","integer","character","integer","integer","integer")
+column_names <- c("","name","team_name","game_date","season","period","minutes_remaining","seconds_remaining","shot_made_flag","action_type","shot_type","shot_distance","opponent","x","y","minute")
+shots_data <- read.csv("../data/shots-data.csv",, sep=",", header = TRUE, col.names = column_names, colClasses = column_types)
+shooting_only0 <- select(shots_data, name, shot_made_flag, shot_type)
+shooting_only <- mutate(shooting_only0, scored = recode(shot_made_flag, "shot_no"=0,"shot_yes"=1))
+```
+
+The overall effective successful scoring of all five players was amazing, with percentage scored much higher than the NBA league average as seen from the table below. Kevin Durant has the overall highest percentage scored of the team of 54%. _Bravo Kevin Durant!_
+
+Effective Shooting % by Player
+```{r Effective Shooting % by Player}
+arrange(summarise(
+  group_by(shooting_only,name),
+  total=length(scored),made=sum(scored),perc_made=mean(scored)),desc(perc_made))
+```
+
+Andre Iguodala came the leading figure in 2-point effective shooting with 64% scoring accuracy. Astonishing!
+
+2PT Effective Shooting % by Player
+```{r 2PT Effective Shooting % by Player}
+arrange(summarise(
+    group_by(filter(shooting_only, shot_type=="2PT Field Goal"),name),
+    total=length(scored),made=sum(scored),perc_made=mean(scored)),desc(perc_made))
+```
+
+As for the 3-point effective shooting, Klay Thompson, the rising star of the team clinched the top with 42.4% socring accuracy! Wow!
+
+3PT Effective Shooting % by Player
+```{r 3PT Effective Shooting % by Player}
+arrange(summarise(
+    group_by(filter(shooting_only, shot_type=="3PT Field Goal"),name),
+    total=length(scored),made=sum(scored),perc_made=mean(scored)),desc(perc_made))
+```
+
+To assist your visualization of the performances by the 5 players, here are the shot charts for each individual player.
+
+```{r out.width='80%', echo = FALSE, fig.align='center'}
+knitr::include_graphics('../images/gsw-shot-charts.png')
+```
+
+Good work Warriors for the 2016 Season! We are looking forward to the next season! Go Warriors Go!
