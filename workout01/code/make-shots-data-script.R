@@ -1,7 +1,7 @@
 # title: make-shots-data-script.R
 # description: to get data for shots made by each player
-# inputs: shots data of each player
-# outputs: 
+# inputs: raw data downloaded from github course websites
+# outputs: combined dataset "shots-data.csv", summaries for each player and combined data
 
 library(dplyr)
 
