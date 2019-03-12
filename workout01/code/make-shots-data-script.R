@@ -14,7 +14,7 @@ thompson <- read.csv("data/klay-thompson.csv",stringsAsFactors = FALSE)
 
 #Add names
 iguodala1 <- cbind( name = "Andre Iguodala", iguodala )
-green1 <- cbind( name = "Graymond Green", green )
+green1 <- cbind( name = "Draymond Green", green )
 durant1 <- cbind( name = "Kevin Durant", durant )
 thompson1 <- cbind( name = "Klay Thompson", thompson )
 curry1 <- cbind( name = "Stephen Curry", curry )
