@@ -1,0 +1,16 @@
+Package: binomial
+Type: Package
+Title: Binomial Distribution
+Version: 0.1.0
+Author: Yin Li (SID: 26385469)
+Maintainer: Yin Li <yin_li@berkeley.edu>
+Description: This package gives you many main functions for the binomial distribution
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
